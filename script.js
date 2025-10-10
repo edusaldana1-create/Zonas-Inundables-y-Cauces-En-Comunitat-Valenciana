@@ -12,7 +12,6 @@ const shareBtn = document.getElementById('share-btn');
 const zoomInBtn = document.getElementById('zoom-in');
 const zoomOutBtn = document.getElementById('zoom-out');
 const changeStyleBtn = document.getElementById('change-style');
-const weatherInfo = document.getElementById('weather-info');
 
 // Variables para control de estilos de mapa
 let currentStyle = 'streets';
@@ -44,7 +43,6 @@ function setupPopups() {
         if (properties.riesgo) {
             popupContent += `<div><strong>Nivel de riesgo:</strong> ${properties.riesgo}</div>`;
         }
-        
         
         popupContent += `
                 <div style="margin-top: 8px; font-size: 12px; color: #666;">
@@ -111,12 +109,12 @@ function setupPopups() {
     });
 }
 
-
-
 // Función para cargar las capas GeoJSON
 function loadGeoJSONLayers() {
-    // Cargar cauces de ríos
-    fetch('geojson/cauces-rios.geojson')
+    console.log('🟡 Cargando capas GeoJSON...');
+    
+    // Cargar cauces de ríos - RUTA CORREGIDA
+    fetch('./geojson/cauces-rios.geojson')
         .then(response => {
             if (!response.ok) {
                 throw new Error('No se pudo cargar cauces-rios.geojson');
@@ -124,7 +122,7 @@ function loadGeoJSONLayers() {
             return response.json();
         })
         .then(data => {
-            console.log('Cauces de ríos cargados:', data);
+            console.log('✅ Cauces de ríos cargados:', data);
             
             if (map.getSource('cauces-rios')) {
                 map.getSource('cauces-rios').setData(data);
@@ -158,13 +156,12 @@ function loadGeoJSONLayers() {
             }
         })
         .catch(error => {
-            console.error('Error cargando cauces-rios.geojson:', error);
-            // Crear datos de ejemplo si no se puede cargar el archivo
+            console.error('❌ Error cargando cauces-rios.geojson:', error);
             addSampleRivers();
         });
     
-    // Cargar comunidad valenciana
-    fetch('geojson/comunidad_valenciana.geojson')
+    // Cargar comunidad valenciana - RUTA CORREGIDA
+    fetch('./geojson/comunidad_valenciana.geojson')
         .then(response => {
             if (!response.ok) {
                 throw new Error('No se pudo cargar comunidad_valenciana.geojson');
@@ -172,7 +169,7 @@ function loadGeoJSONLayers() {
             return response.json();
         })
         .then(data => {
-            console.log('Comunidad Valenciana cargada:', data);
+            console.log('✅ Comunidad Valenciana cargada:', data);
             
             if (map.getSource('comunidad-valenciana')) {
                 map.getSource('comunidad-valenciana').setData(data);
@@ -194,13 +191,12 @@ function loadGeoJSONLayers() {
             }
         })
         .catch(error => {
-            console.error('Error cargando comunidad_valenciana.geojson:', error);
-            // Crear datos de ejemplo si no se puede cargar el archivo
+            console.error('❌ Error cargando comunidad_valenciana.geojson:', error);
             addSampleRegion();
         });
     
-    // Cargar zonas inundables
-    fetch('geojson/zonas-inundables.geojson')
+    // Cargar zonas inundables - RUTA CORREGIDA
+    fetch('./geojson/zonas-inundables.geojson')
         .then(response => {
             if (!response.ok) {
                 throw new Error('No se pudo cargar zonas-inundables.geojson');
@@ -208,7 +204,7 @@ function loadGeoJSONLayers() {
             return response.json();
         })
         .then(data => {
-            console.log('Zonas inundables cargadas:', data);
+            console.log('✅ Zonas inundables cargadas:', data);
             
             if (map.getSource('zonas-inundables')) {
                 map.getSource('zonas-inundables').setData(data);
@@ -230,8 +226,7 @@ function loadGeoJSONLayers() {
             }
         })
         .catch(error => {
-            console.error('Error cargando zonas-inundables.geojson:', error);
-            // Crear datos de ejemplo si no se puede cargar el archivo
+            console.error('❌ Error cargando zonas-inundables.geojson:', error);
             addSampleFloodZones();
         });
 }
@@ -564,6 +559,12 @@ function changeMapStyle() {
     });
 }
 
+// Función para información meteorológica
+function loadWeatherInfo() {
+    console.log("🌤️ Información meteorológica - función disponible");
+    // Puedes implementar llamadas a API del tiempo aquí
+}
+
 // Event Listeners
 locateBtn.addEventListener('click', locateUser);
 shareBtn.addEventListener('click', shareMap);
@@ -578,7 +579,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Cargar capas GeoJSON cuando el mapa esté listo
 map.on('load', function() {
+    console.log('✅ Mapa cargado correctamente');
     loadGeoJSONLayers();
     setupPopups();
     loadWeatherInfo();
 });
+
+// Debug
+console.log('🔧 Script cargado correctamente');
