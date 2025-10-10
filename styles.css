@@ -10,17 +10,23 @@ body {
     background-color: #f8f9fa;
     color: #333;
     line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ===== CABECERA ===== */
 .header {
-    background:#012e50;
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
     color: white;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000;
+    flex-shrink: 0;
 }
 
 .header h1 {
@@ -39,7 +45,10 @@ body {
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .container {
     display: flex;
+    flex: 1;
     height: calc(100vh - 120px);
+    position: relative;
+    overflow: hidden;
 }
 
 /* ===== BARRA LATERAL ===== */
@@ -49,6 +58,9 @@ body {
     padding: 1.5rem;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 500;
+    flex-shrink: 0;
 }
 
 .panel-section {
@@ -95,6 +107,7 @@ body {
     border-bottom: 1px solid #f1f3f4;
     font-size: 0.9rem;
     color: #495057;
+    line-height: 1.4;
 }
 
 .safety-tips li:before {
@@ -145,20 +158,23 @@ body {
 .map-container {
     flex: 1;
     position: relative;
+    z-index: 1;
 }
 
 #map {
     width: 100%;
     height: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== BOTÓN GEOLOCALIZACIÓN EN EL MAPA ===== */
 .geolocate-btn-map {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
     z-index: 1000;
-    background:  #35cc41;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     color: white;
     border: none;
     padding: 0.6rem 1rem;
@@ -180,7 +196,7 @@ body {
 /* ===== BOTÓN COMPARTIR EN EL MAPA ===== */
 .share-btn-map {
     position: absolute;
-    top: 55px; /* Justo debajo del botón de geolocalización */
+    top: 70px; /* Justo debajo del botón de geolocalización */
     right: 10px;
     z-index: 1000;
     background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
@@ -277,6 +293,7 @@ body {
     max-width: 400px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin: 1rem;
 }
 
 .permission-content h3 {
@@ -326,6 +343,9 @@ body {
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1000;
 }
 
 .footer a {
@@ -338,65 +358,123 @@ body {
     text-decoration: underline;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE - MÓVIL ===== */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-    }
-    
-    .sidebar {
-        width: 100%;
-        order: 2;
-        max-height: 40vh;
-    }
-    
-    .map-container {
-        order: 1;
-        height: 60vh;
+    body {
+        height: 100vh;
+        overflow: hidden;
     }
     
     .header {
+        padding: 1rem;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.5rem;
         text-align: center;
     }
     
     .header h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        order: 1;
     }
     
-    .geolocate-btn-map {
-        top: 45px;
-        right: 5px;
+    .emergency-corner {
+        order: 2;
+        font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
     }
     
-    .share-btn-map {
-        top: 90px;
-        right: 5px;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
+    .container {
+        flex-direction: column;
+        height: calc(100vh - 140px);
     }
     
-    .leaflet-control-custom {
-        margin-top: 5px !important;
+    .sidebar {
+        width: 100%;
+        max-height: 35vh;
+        overflow-y: auto;
+        padding: 1rem;
+        order: 2;
     }
     
-    .leaflet-control-custom a {
-        width: 28px;
-        height: 28px;
-        line-height: 28px;
+    .map-container {
+        order: 1;
+        height: 65vh;
+        flex: none;
+    }
+    
+    .panel-section {
+        margin-bottom: 1rem;
+    }
+    
+    .panel-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .safety-tips li {
+        font-size: 0.8rem;
+        padding: 0.3rem 0;
+    }
+    
+    .legend-text {
         font-size: 0.8rem;
     }
     
-    .permission-content {
-        margin: 1rem;
-        padding: 1.5rem;
+    .geolocate-btn-map {
+        top: 5px;
+        right: 5px;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+        min-height: 40px;
     }
     
-    .permission-buttons {
-        flex-direction: column;
+    .share-btn-map {
+        top: 55px;
+        right: 5px;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+        min-height: 40px;
+    }
+    
+    .btn-share {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
+    
+    .footer {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Asegurar que los controles de Leaflet sean visibles */
+    .leaflet-control-container {
+        position: relative;
+        z-index: 1000;
+    }
+    
+    .leaflet-top, .leaflet-bottom {
+        z-index: 1000;
+    }
+}
+
+/* Corrección adicional para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .sidebar {
+        max-height: 30vh;
+    }
+    
+    .map-container {
+        height: 70vh;
+    }
+    
+    .header h1 {
+        font-size: 1rem;
+    }
+    
+    .geolocate-btn-map,
+    .share-btn-map {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.7rem;
     }
 }
