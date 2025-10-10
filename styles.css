@@ -150,6 +150,10 @@ body {
 
 /* ===== BOTONES ===== */
 .btn-share {
+    position: absolute;
+    top: 100px; /* Cambiado de 50px a 100px para estar debajo del botón de geolocalización */
+    right: 10px;
+    z-index: 1000;
     background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
     color: white;
     border: none;
@@ -159,8 +163,6 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 100%;
-    margin-top: 0.8rem;
     box-shadow: 0 2px 8px rgba(111, 66, 193, 0.3);
     font-family: 'Inter', sans-serif;
     min-height: 44px;
@@ -477,4 +479,5 @@ body {
     input, select, textarea {
         font-size: 16px;
     }
+
 }
