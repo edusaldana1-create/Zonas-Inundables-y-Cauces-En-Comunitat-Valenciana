@@ -128,7 +128,7 @@ body {
 /* Controles del mapa */
 .map-controls {
     position: absolute;
-    top: 20px;
+    top: 8px;
     left: 20px;
     display: flex;
     flex-direction: column;
@@ -190,16 +190,16 @@ body {
 /* Botones de acción en el mapa */
 .map-action-buttons {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 2px;
+    right: 2px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
     z-index: 1000;
 }
 
 .action-btn {
-    padding: 4px 6px;
+    padding: 6px 12px;
     border: none;
     border-radius: 5px;
     color: white;
@@ -211,7 +211,7 @@ body {
     justify-content: center;
     gap: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .location-btn {
@@ -234,7 +234,7 @@ body {
 .map-legend {
     position: absolute;
     bottom: 40px;
-    right: 20px;
+    right: 4px;
     background: white;
     padding: 10px 15px;
     border-radius: 5px;
