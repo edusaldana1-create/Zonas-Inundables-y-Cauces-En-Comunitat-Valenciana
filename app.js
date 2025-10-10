@@ -88,10 +88,36 @@ function setupBaseLayers() {
         "Claro": brightMap
     };
 
-    L.control.layers(baseMaps, null, { 
+    // Crear control de capas
+    var layersControl = L.control.layers(baseMaps, null, { 
         position: 'topleft',
         collapsed: true
     }).addTo(map);
+
+    // Crear botón personalizado para compartir (integrado en controles)
+    var shareControl = L.Control.extend({
+        options: {
+            position: ''
+        },
+        
+        onAdd: function(map) {
+            var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+            container.innerHTML = `
+                <a href="#" title="Compartir mapa">↗</a>
+            `;
+            
+            L.DomEvent.on(container, 'click', function(e) {
+                L.DomEvent.stopPropagation(e);
+                L.DomEvent.preventDefault(e);
+                shareApp();
+            });
+            
+            return container;
+        }
+    });
+    
+    // Añadir control personalizado al mapa
+    map.addControl(new shareControl());
 }
 
 /**
@@ -109,8 +135,11 @@ function setupEventListeners() {
     // Botón de geolocalización en el mapa
     document.getElementById('geolocate-btn-map').addEventListener('click', locateUser);
     
-    // Botón de compartir
+    // Botón de compartir en la barra lateral
     document.getElementById('share-btn').addEventListener('click', shareApp);
+    
+    // NUEVO: Botón de compartir en el mapa
+    document.getElementById('share-btn-map').addEventListener('click', shareApp);
     
     // Botones del modal de permisos
     document.getElementById('allowLocation').addEventListener('click', allowLocation);
