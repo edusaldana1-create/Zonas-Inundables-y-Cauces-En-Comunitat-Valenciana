@@ -1,7 +1,7 @@
 // Configuración inicial del mapa - centrado en Comunitat Valenciana
 const map = new maplibregl.Map({
     container: 'map',
-    style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+    style: 'https://api.maptiler.com/maps/basic-v2/style.json?key=khpYaWwMTabvpR0t8ghe',
     center: [-0.3774, 39.4598], // Centro de Comunitat Valenciana
     zoom: 8
 });
@@ -17,8 +17,8 @@ const weatherInfo = document.getElementById('weather-info');
 // Variables para control de estilos de mapa
 let currentStyle = 'streets';
 const mapStyles = {
-    'streets': 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
-    'satellite': 'https://api.maptiler.com/maps/satellite/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+    'streets': 'https://api.maptiler.com/maps/basic-v2/style.json?key=khpYaWwMTabvpR0t8ghe',
+    'satellite': 'https://api.maptiler.com/maps/satellite/style.json?key=khpYaWwMTabvpR0t8ghe',
 };
 
 // Función para crear popups
@@ -581,4 +581,5 @@ map.on('load', function() {
     loadGeoJSONLayers();
     setupPopups();
     loadWeatherInfo();
+
 });
