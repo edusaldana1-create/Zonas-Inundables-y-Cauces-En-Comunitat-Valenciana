@@ -1,0 +1,402 @@
+/* ===== ESTILOS GENERALES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== CABECERA ===== */
+.header {
+    background:#012e50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.emergency-corner {
+    background: #dc3545;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+    display: flex;
+    height: calc(100vh - 120px);
+}
+
+/* ===== BARRA LATERAL ===== */
+.sidebar {
+    width: 300px;
+    background: white;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.panel-section {
+    margin-bottom: 2rem;
+}
+
+.panel-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6f42c1;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* ===== LEYENDA ===== */
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    border: 2px solid;
+}
+
+.legend-text {
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+/* ===== CONSEJOS DE SEGURIDAD ===== */
+.safety-tips ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.safety-tips li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f3f4;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.safety-tips li:before {
+    content: "⚠️";
+    margin-right: 8px;
+}
+
+/* ===== ENLACES ===== */
+.links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.links-section a {
+    color: #6f42c1;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.links-section a:hover {
+    color: #e83e8c;
+    text-decoration: underline;
+}
+
+/* ===== BOTÓN COMPARTIR EN BARRA LATERAL ===== */
+.btn-share {
+    width: 100%;
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-share:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.4);
+}
+
+/* ===== CONTENEDOR DEL MAPA ===== */
+.map-container {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== BOTÓN GEOLOCALIZACIÓN EN EL MAPA ===== */
+.geolocate-btn-map {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    z-index: 1000;
+    background:  #35cc41;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+    font-family: 'Inter', sans-serif;
+    min-height: 44px;
+}
+
+.geolocate-btn-map:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+/* ===== BOTÓN COMPARTIR EN EL MAPA ===== */
+.share-btn-map {
+    position: absolute;
+    top: 55px; /* Justo debajo del botón de geolocalización */
+    right: 10px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(111, 66, 193, 0.3);
+    font-family: 'Inter', sans-serif;
+    min-height: 44px;
+}
+
+.share-btn-map:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.4);
+}
+
+/* ===== CONTROL PERSONALIZADO COMPARTIR ===== */
+.leaflet-control-custom {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    margin-top: 10px !important;
+}
+
+.leaflet-control-custom a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.leaflet-control-custom a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(111, 66, 193, 0.4);
+}
+
+/* ===== MARCADOR DE UBICACIÓN DEL USUARIO ===== */
+.user-location-marker {
+    background: transparent;
+    border: none;
+}
+
+.user-location-pulse {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* ===== MODAL DE PERMISOS ===== */
+.permission-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.permission-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.permission-content h3 {
+    color: #6f42c1;
+    margin-bottom: 1rem;
+}
+
+.permission-content p {
+    margin-bottom: 1.5rem;
+    color: #495057;
+}
+
+.permission-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.permission-btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.permission-btn.allow {
+    background: #28a745;
+    color: white;
+}
+
+.permission-btn.deny {
+    background: #dc3545;
+    color: white;
+}
+
+.permission-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== PIE DE PÁGINA ===== */
+.footer {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #6f42c1;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #e83e8c;
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .sidebar {
+        width: 100%;
+        order: 2;
+        max-height: 40vh;
+    }
+    
+    .map-container {
+        order: 1;
+        height: 60vh;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .geolocate-btn-map {
+        top: 45px;
+        right: 5px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .share-btn-map {
+        top: 90px;
+        right: 5px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .leaflet-control-custom {
+        margin-top: 5px !important;
+    }
+    
+    .leaflet-control-custom a {
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .permission-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .permission-buttons {
+        flex-direction: column;
+    }
+}
